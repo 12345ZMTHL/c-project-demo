@@ -77,6 +77,10 @@ int main() {
         }
         if (type == 2) {
             printf("电压：%0.2f \n", voltage / pow(2, 12));
+            hex_number = 0;
+            voltage = 0;
+            type = 0;
+            valid_input = 0;
             continue;
         }
 
