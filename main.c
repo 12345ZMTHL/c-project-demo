@@ -29,7 +29,7 @@ int main() {
     char input_buf[256];
     int valid_input = 0;
     while(1) {
-        printf("功能选择: 1、解析数据，2、解析输出电压，q退出程序 \n");
+        printf("功能选择: 1、解析电流，温度，2、解析输出电压，q退出程序 \n");
         while (1) {
             if (scanf("%d", &type) == 1) {
                 if (type < 0 || type > 2) {
