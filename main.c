@@ -28,13 +28,21 @@ int main() {
     // 承接输入的十六进制字符串
     char input_buf[256];
     int valid_input = 0;
+    // 功能选择成功标志位
+    char funFlag = 0;
     while(1) {
-        printf("功能选择: 1、解析电流，温度，2、解析输出电压，q退出程序 \n");
+        printf("功能选择: 1: 解析电流，温度，2: 解析输出电压，3：清屏，q退出程序 \n");
         while (1) {
+            
             if (scanf("%d", &type) == 1) {
-                if (type < 0 || type > 2) {
-                    printf("请输入1或者2！\n");
-                } else {
+                switch(type) {
+                    case 1: 
+                    case 2: funFlag = 1; break;
+                    case 3: system("cls"); printf("功能选择: 1: 解析电流，温度，2: 解析输出电压，3：清屏，q退出程序 \n");break;
+                    default: printf("请选择功能1或者2！\n");
+                }
+                // 选择正常功能跳出循环
+                if (funFlag) {
                     break;
                 }
             } else {
@@ -55,10 +63,6 @@ int main() {
 
             // 移除换行符，并检查输入的字符串是否为有效的十六进制数
             input_buf[strcspn(input_buf, "\n")] = 0;
-            // 检查输入是否为 "q"
-            if (strcmp(input_buf, "q") == 0 || strcmp(input_buf, "Q") == 0) {
-                return 0;
-            }
             // 校验
             if (isValidHexString(input_buf))
             {
@@ -81,6 +85,7 @@ int main() {
             voltage = 0;
             type = 0;
             valid_input = 0;
+            funFlag = 0;
             continue;
         }
 
@@ -121,6 +126,7 @@ int main() {
         voltage = 0;
         type = 0;
         valid_input = 0;
+        funFlag = 0;
     }
     return 0;
 }
